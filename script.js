@@ -8,3 +8,45 @@ function getComputerChoice(){
             return "Scissors";
     }
 }
+
+
+function playRound(playerSelection, computerSelection){
+    switch(playerSelection){
+        case "Rock":
+            switch(computerSelection){
+                case "Rock":
+                    return "Tie!";
+
+                case "Paper":
+                    return "You Lose! Paper beats Rock";
+
+                case "Scissors":
+                    return "You Win! Rock beats Paper";
+            }
+
+        case "Paper":
+            switch(computerSelection){
+                case "Rock":
+                    return "You Win! Paper beats Rock";
+
+                case "Paper":
+                    return "Tie!"
+
+                case "Scissors":
+                    return "You Lose! Scissors beats Paper"
+            }
+
+        case "Scissors":
+            switch(computerSelection){
+                case "Rock":
+                    return "You Lose! Rock beats Scissors"
+
+                case "Paper":
+                    return "You Win! Scissors beats Paper"
+
+                case "Scissors":
+                    return "Tie!"
+            }
+        
+    }
+}
