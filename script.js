@@ -1,5 +1,5 @@
-function getComputerChoice(){
-    switch(Math.floor(Math.random() * 3)){
+function getComputerChoice() {
+    switch (Math.floor(Math.random() * 3)) {
         case 0:
             return "Rock";
         case 1:
@@ -10,13 +10,13 @@ function getComputerChoice(){
 }
 
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection[0].toUpperCase() + playerSelection.substring(1).toLowerCase();
 
-    switch(playerSelection){
+    switch (playerSelection) {
         case "Rock":
-            switch(computerSelection){
+            switch (computerSelection) {
                 case "Rock":
                     return "Tie!";
 
@@ -28,7 +28,7 @@ function playRound(playerSelection, computerSelection){
             }
 
         case "Paper":
-            switch(computerSelection){
+            switch (computerSelection) {
                 case "Rock":
                     return "You Win! Paper beats Rock";
 
@@ -40,7 +40,7 @@ function playRound(playerSelection, computerSelection){
             }
 
         case "Scissors":
-            switch(computerSelection){
+            switch (computerSelection) {
                 case "Rock":
                     return "You Lose! Rock beats Scissors"
 
@@ -50,8 +50,33 @@ function playRound(playerSelection, computerSelection){
                 case "Scissors":
                     return "Tie!"
             }
-        
+
     }
 }
 
 
+function playGame() {
+
+    let numberOfRounds = 5;
+    let userScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < numberOfRounds; i++) {
+        
+        let playerSelection = prompt("Please enter move");
+        let roundResult = playRound(playerSelection, getComputerChoice());
+
+        console.log(roundResult);
+        if(roundResult.includes("Win")){
+            userScore++;
+        }
+        else if(roundResult.includes("Lose")){
+            computerScore++;
+        }
+    }
+
+    userScore === computerScore ?   console.log("Draw! Your score: " + userScore) :
+        userScore > computerScore ? console.log("You are the final winner! Your score: " + userScore) :
+                                         console.log("Computer is the final winner! Your score: " + userScore)
+}
+
+playGame();
